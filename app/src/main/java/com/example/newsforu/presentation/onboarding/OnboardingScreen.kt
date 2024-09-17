@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
@@ -29,8 +31,12 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen(){
-    Column (modifier = Modifier.fillMaxSize()){
+fun OnBoardingScreen(
+    event: (OnBoardingEvent) -> Unit)
+{
+    Column (modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())){
         val pagerState = rememberPagerState (initialPage = 0){
             pages.size
         }
@@ -88,8 +94,8 @@ fun OnBoardingScreen(){
                 NewsButton(text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3) {
-                                //TODO: Navigate to Home Screen
+                            if (pagerState.currentPage == 2) {
+                                event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
