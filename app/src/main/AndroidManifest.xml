@@ -2,14 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:name=".NewsApplication"
-=======
-    <application
->>>>>>> 59bb0715eea953f29f952b242a81d3742065879a
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -32,7 +28,6 @@
         </activity>
     </application>
 
-<<<<<<< HEAD
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW"/>
